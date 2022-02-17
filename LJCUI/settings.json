@@ -1,0 +1,5 @@
+{
+    "ConnectionStrings": {
+        "Database": "Server=tcp:lakejacksoncyclingdb.database.windows.net,1433;Initial Catalog=Lake;Persist Security Info=False;User ID=LJCAdmin;Password=Hawaii12!;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;"
+    }
+}

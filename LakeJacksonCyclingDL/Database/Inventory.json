@@ -1,0 +1,37 @@
+[
+  {
+    "itemID": 0,
+    "ItemName": "Fuji s1250",
+    "Description": "One of the best bikes in the market. Fiber carbon body makes for a light frame and low wind resetance.",
+    "Price": 1520.23,
+    "Quantity": 3
+  },
+  {
+    "itemID": 0,
+    "ItemName": "Bib Shorts",
+    "Description": "Bike shorts that will last for a 12 hr ride in the saddle",
+    "Price": 150.2,
+    "Quantity": 100
+  },
+  {
+    "itemID": 0,
+    "ItemName": "Bib Tights Premium",
+    "Description": "Thermal Bibs tight that provide ours of warmth in cold burtal weather.",
+    "Price": 200,
+    "Quantity": 5
+  },
+  {
+    "itemID": 0,
+    "ItemName": "Gaint Contend 3",
+    "Description": "Designed for aspiring riders aiming to ride a little faster and go a little farther, Contend offers a smooth, efficient ride quality and a quick, agile feel on the road.",
+    "Price": 860,
+    "Quantity": 2
+  },
+  {
+    "itemID": 0,
+    "ItemName": "Bib Shorts",
+    "Description": "Bike shorts that will last for a 12 hr ride in the saddle",
+    "Price": 150.2,
+    "Quantity": 100
+  }
+]

@@ -1,0 +1,50 @@
+[
+  {
+    "cId": 0,
+    "Name": "Joe Smith",
+    "Address": "1234 Some st",
+    "City": "Lake Jackson",
+    "State": "Texas",
+    "Zip": 77566,
+    "Email": "someone@thisplace.com",
+    "PhoneNumber": 12345678910,
+    "Ordered": [
+      {
+        "orderID": 0,
+        "LineItems": null
+      }
+    ]
+  },
+  {
+    "cId": 0,
+    "Name": "Kris",
+    "Address": "1234 Some st",
+    "City": "Lake Jackson",
+    "State": "Texas",
+    "Zip": 77566,
+    "Email": "someone@thisplace.com",
+    "PhoneNumber": 12345678910,
+    "Ordered": [
+      {
+        "orderID": 0,
+        "LineItems": null
+      }
+    ]
+  },
+  {
+    "cId": 0,
+    "Name": "Kristopher R Wasserman",
+    "Address": "202 arrowhead dr",
+    "City": "Lake Jackson",
+    "State": "Texas",
+    "Zip": 77566,
+    "Email": "kristopherwasserman6@msn.com",
+    "PhoneNumber": 8083989431,
+    "Ordered": [
+      {
+        "orderID": 0,
+        "LineItems": null
+      }
+    ]
+  }
+]
