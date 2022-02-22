@@ -1,0 +1,81 @@
+using System;
+using System.Collections.Generic;
+using System.Data.SqlClient;
+using System.Linq;
+using System.Threading.Tasks;
+using LakeJacksonCyclingBL;
+using LakeJacksonCyclingModel;
+using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc;
+
+namespace LJCApi.Controllers
+{
+    [Route("api/[controller]")]
+    [ApiController]
+    public class CustomerController : ControllerBase
+    {
+        private ILakeJacksonBL _repo;
+
+        public CustomerController(ILakeJacksonBL p_cInfoBL)
+        {
+            _repo = p_cInfoBL;
+        } 
+        // GET: api/Customer
+        [HttpGet("GetAllCustomers")]
+        public IActionResult GetAllCustomers()
+        {
+            try
+            {
+                return Ok(_repo.GetAllCustomers());
+            }
+            catch (SqlException)
+            {
+                
+                return NotFound();
+            }
+            
+        }
+
+        // GET: api/Customer/5
+        [HttpGet]
+        public IActionResult GetCustomer([FromQuery] int cId)
+        {
+            try
+            {
+                return Ok(_repo.GetCustomerById(cId));
+            }
+            catch (System.Exception)
+            {
+                
+                return NotFound();
+            }
+        }
+
+        // POST: api/Customer
+        [HttpPost("Add")]
+        public IActionResult AddCustomer([FromQuery] Customers p_Name)
+        {
+            try
+            {
+                return Created("Customer Added Successfully!", _repo.AddCustomer(p_Name));
+            }
+            catch (System.Exception ex)
+            {
+                
+                return Conflict(ex.Message);
+            }
+        }
+
+        // // PUT: api/Customer/5
+        // [HttpPut("{id}")]
+        // public void Put(int id, [FromBody] string value)
+        // {
+        // }
+
+        // // DELETE: api/Customer/5
+        // [HttpDelete("{id}")]
+        // public void Delete(int id)
+        // {
+        // }
+    }
+}
