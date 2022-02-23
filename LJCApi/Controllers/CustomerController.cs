@@ -12,11 +12,16 @@ namespace LJCApi.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class CustomerController : ControllerBase
+    public class CustomersController : ControllerBase
     {
         private ILakeJacksonBL _repo;
 
-        public CustomerController(ILakeJacksonBL p_cInfoBL)
+        /// <summary>
+        /// adds a customer via an api
+        /// </summary>
+        /// <param name="p_cInfoBL"></param>
+
+        public CustomersController(ILakeJacksonBL p_cInfoBL)
         {
             _repo = p_cInfoBL;
         } 
@@ -37,7 +42,7 @@ namespace LJCApi.Controllers
         }
 
         // GET: api/Customer/5
-        [HttpGet]
+        [HttpGet("GetCustomerByID")]
         public IActionResult GetCustomer([FromQuery] int cId)
         {
             try
