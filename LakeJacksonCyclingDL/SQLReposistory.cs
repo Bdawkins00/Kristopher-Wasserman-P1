@@ -16,7 +16,7 @@ namespace LakeJacksonCyclingDL
         }
         public Customers AddCustomer(Customers p_name)
         {
-            string sqlQuery = @"insert into CustomerInfo values(@cName, @Address, @City, @State, @Zip, @Email, @Phone,@storeID)";
+            string sqlQuery = @"insert into CustomerInfo values(@cID, @cName, @Address, @City, @State, @Zip, @Email, @Phone,@storeID)";
 
             using (SqlConnection con = new SqlConnection(_connectionStrings))
             {
