@@ -14,7 +14,7 @@ namespace LakeJacksonCyclingModel
         public decimal OrderTotal {get;set;}
         public int Quantity {get;set;}
         private List<ItemLines> _itemLine;
-        public int orderTotal;
+       
         public List<ItemLines> LineItems
         {
             get { return _itemLine; }

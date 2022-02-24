@@ -14,7 +14,7 @@ namespace LJCApi.Controllers
     [ApiController]
     public class CustomersController : ControllerBase
     {
-        private ILakeJacksonBL _repo;
+        private readonly ILakeJacksonBL _repo;
 
         /// <summary>
         /// adds a customer via an api
@@ -70,17 +70,5 @@ namespace LJCApi.Controllers
                 return Conflict(ex.Message);
             }
         }
-
-        // // PUT: api/Customer/5
-        // [HttpPut("{id}")]
-        // public void Put(int id, [FromBody] string value)
-        // {
-        // }
-
-        // // DELETE: api/Customer/5
-        // [HttpDelete("{id}")]
-        // public void Delete(int id)
-        // {
-        // }
     }
 }

@@ -1,3 +1,5 @@
+using System.ComponentModel.DataAnnotations;
+
 namespace LakeJacksonCyclingModel
 {
     public class Products
@@ -17,7 +19,7 @@ namespace LakeJacksonCyclingModel
                 }
                 else
                 {
-                    throw new Exception(" Enter a name for the item");
+                    throw new ValidationException(" Enter a name for the item");
 
                 }
             }
@@ -36,7 +38,7 @@ namespace LakeJacksonCyclingModel
                 }
                 else
                 {
-                    throw new Exception("Product must have a description.");
+                    throw new ValidationException("Product must have a description.");
                 }
             }
         }
@@ -53,7 +55,7 @@ namespace LakeJacksonCyclingModel
                 else
                 {
                     
-                    throw new Exception("Please enter a valid price. Above 0.00");
+                    throw new ValidationException("Please enter a valid price. Above 0.00");
                 }
             }
         }
@@ -70,7 +72,7 @@ namespace LakeJacksonCyclingModel
                 }
                 else
                 {
-                    throw new Exception("Quantity can not be less than 0,This means we dont have anything!");
+                    throw new ValidationException("Quantity can not be less than 0,This means we dont have anything!");
                 }
             }
         }

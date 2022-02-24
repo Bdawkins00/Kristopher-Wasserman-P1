@@ -1,10 +1,12 @@
-﻿namespace LakeJacksonCyclingModel
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace LakeJacksonCyclingModel
 {
     public class Customers
     {
         private string name;
         private string _zip;
-        private string _state;
+       
         private string _email;
         public int cId {get;set;}
         public string Name{
@@ -17,7 +19,7 @@
                 }
                 else
                 {
-                    throw new Exception("The customer must have a name to be called by");
+                    throw new ValidationException ("Please enter a valid zip code");
                 }
             }
 
@@ -39,7 +41,7 @@
                 }
                 else
                 {
-                    throw new Exception("A customer must have a zip code");
+                    throw new ValidationException("A customer must have a zip code");
                 }
             }
         }
