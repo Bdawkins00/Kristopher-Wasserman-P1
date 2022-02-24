@@ -21,7 +21,7 @@ namespace LakeJacksonCyclingBL
         List<Products> GetAllProducts();
 
         List<Customers> GetAllCustomers();
-        List<Customers> SearchCustomer(string name);
+        List<Customers> SearchCustomer(string p_name);
 
        Customers GetCustomerById(int customerID);
 

@@ -40,10 +40,10 @@ namespace LakeJacksonCyclingBL
 
         
 
-        public List<Products> SearchProducts(string p_name)
+        public List<Products> SearchProducts(string name)
         {
             List<Products> ProductList = _repo.GetProducts();
-            return ProductList.Where(pList => pList.ItemName.Contains(p_name)).ToList();
+            return ProductList.Where(pList => pList.ItemName.Contains(name)).ToList();
         }
 
        
