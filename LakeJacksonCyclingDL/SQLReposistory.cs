@@ -251,7 +251,7 @@ namespace LakeJacksonCyclingDL
 
         public List<Orders> GetCustomerHistory(int orderid)
         {
-            string sqlQuery = "select li.OrderID, p.itemName, p.Price, o.storeID, o.OrderTotal, li.Quantity  from LineItem li inner join Products p  on li.ProductID = p.productID INNER join Orders o on li.OrderID = o.orderId where li.Orderid ="+ orderid;
+            string sqlQuery = "select li.OrderID, p.itemName, p.Price, o.storeID, o.OrderTotal, li.Quantity  from LineItem li inner join Products p  on li.ProductID = p.productID INNER join Orders o on li.OrderID = o.orderId where li.Orderid = @orderid";
            
             List<Orders> listofOrderHistory = new List<Orders>();
 
@@ -259,6 +259,7 @@ namespace LakeJacksonCyclingDL
             {
                 con.Open();
                 SqlCommand command = new SqlCommand(sqlQuery,con);
+                command.Parameters.AddWithValue("@orderid", orderid);
 
                 SqlDataReader reader = command.ExecuteReader();
 
