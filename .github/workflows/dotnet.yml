@@ -95,7 +95,7 @@ jobs:
     - name: Deploy
       uses: azure/webapps-deploy@v2
       with:
-        app-name: LJCApi
+        app-name: LakeJacksonWeb
         slot-name: 'Production'
         publish-profile: $${{secrets.MYAPISECRET}}
         package: ./publish
