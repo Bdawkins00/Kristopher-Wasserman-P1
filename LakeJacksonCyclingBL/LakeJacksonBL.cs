@@ -8,7 +8,7 @@ namespace LakeJacksonCyclingBL
         /// <summary>
         /// The injection below allows functions to do what they need to get done.
         /// </summary>
-        private IRepository _repo;
+        private readonly IRepository _repo;
         public LakeJacksonBL(IRepository p_repo)
         {
             _repo = p_repo;
