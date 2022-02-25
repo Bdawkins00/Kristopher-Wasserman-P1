@@ -283,7 +283,7 @@ namespace LakeJacksonCyclingDL
 
         public List<StoreModel> GetStoreHistory(int storeid)
         {
-            string sqlQuery = "select o.storeID ,o.OrderTotal, o.orderId,p.itemName ,p.productID  from Orders o inner join Products p on o.storeID = p.productID INNER JOIN StoreFront sf on o.storeID = sf.storeID  where o.storeid = "+ storeid;
+            string sqlQuery = "select o.storeID ,o.OrderTotal, o.orderId,p.itemName ,p.productID  from Orders o inner join Products p on o.storeID = p.productID INNER JOIN StoreFront sf on o.storeID = sf.storeID  where o.storeid = @storeid";
            
             List<StoreModel> ListOfStoreHistory = new List<StoreModel>();
 
@@ -292,6 +292,7 @@ namespace LakeJacksonCyclingDL
                 con.Open();
                 SqlCommand command = new SqlCommand(sqlQuery,con);
 
+                command.Parameters.AddWithValue("@orderid", storeid);
                 SqlDataReader reader = command.ExecuteReader();
 
                 while(reader.Read())
