@@ -7,7 +7,7 @@ namespace LakeJacksonCyclingModel
         private string name;
         private string _zip;
        
-        private string _email;
+        
         public int cId {get;set;}
         public string Name{
             get{return name;}
