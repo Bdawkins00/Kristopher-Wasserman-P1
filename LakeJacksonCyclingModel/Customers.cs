@@ -45,27 +45,11 @@ namespace LakeJacksonCyclingModel
                 }
             }
         }
-        public string Email 
-        {
-            get{ return _email;}
-
-            set
-            {
-                _email = value;
-            }
-        }
+        public string Email {get;set;}
         public string PhoneNumber { get; set; }
 
-        private List<Orders> _orders;
-        public List<Orders> Ordered
-        {
-            get { return _orders; }
-
-            set
-            {
-                _orders = value;
-            }
-        }
+       
+        public List<Orders> Ordered {get;set;}
 
         
         public override string ToString()

@@ -77,7 +77,7 @@ namespace LakeJacksonCyclingBL
             {
                 listOfProduct.Add(GetAllProducts().Find(p => p.productID.Equals(p_name.productID)));
             }
-            //return GetAllProducts().Where(storeID=> storeID.Equals(storeid)).ToList();
+            
             return listOfProduct;
         }
 

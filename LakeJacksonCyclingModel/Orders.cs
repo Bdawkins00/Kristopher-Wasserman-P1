@@ -13,16 +13,8 @@ namespace LakeJacksonCyclingModel
         public string StoreAddress {get;set;}
         public decimal OrderTotal {get;set;}
         public int Quantity {get;set;}
-        private List<ItemLines> _itemLine;
        
-        public List<ItemLines> LineItems
-        {
-            get { return _itemLine; }
-            set
-            {
-                _itemLine = value;
-            }
-        }
+        public List<ItemLines> LineItems{get;set;}
 
          public override string ToString()
          {
