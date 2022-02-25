@@ -25,8 +25,8 @@ namespace LakeJacksonCyclingBL
 
        Customers GetCustomerById(int customerID);
 
-        StoreFrontModel GetStoreFrontById(int storeid);
-      List<Products> GetAllProductsByStoreID(int storeID);
+        StoreFrontModel GetStoreFrontById(int storeID);
+      List<Products> GetAllProductsByStoreID(int storeid);
 
       List<StoreFrontModel> GetAllStoreFront();
 
