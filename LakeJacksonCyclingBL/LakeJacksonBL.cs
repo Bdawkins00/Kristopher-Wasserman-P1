@@ -81,9 +81,9 @@ namespace LakeJacksonCyclingBL
             return listOfProduct;
         }
 
-        public StoreFrontModel GetStoreFrontById(int storeid)
+        public StoreFrontModel GetStoreFrontById(int storeID)
         {
-            return GetAllStoreFront().Where(storeid=>storeid.Equals(storeid)).First();
+            return GetAllStoreFront().Where(storeid=>storeID.Equals(storeID)).First();
         }
 
         public List<Inventory> GetAllInventory()
