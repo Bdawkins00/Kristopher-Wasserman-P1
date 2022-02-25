@@ -18,7 +18,7 @@ namespace LakeJacksonCyclingDL
 
             List<Inventory> GetAllInventory(); 
             void AddProductToStore(int storeID,int  productID,int quantity);
-            List<Orders> GetCustomerHistory(int customerid);
+            List<Orders> GetCustomerHistory(int orderid);
 
             List<StoreModel> GetStoreHistory(int storeid);
 

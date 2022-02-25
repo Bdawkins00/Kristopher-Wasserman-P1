@@ -3,14 +3,14 @@ using LakeJacksonCyclingModel;
 
 namespace LakeJacksonCyclingDL
 {
-    public class SQLRepository : IRepository
+    public class SqlRepository : IRepository
     {
 
         /// <summary>
         /// sql database.
         /// </summary>
         private readonly string _connectionStrings;
-        public SQLRepository(string p_connectionStrings)
+        public SqlRepository(string p_connectionStrings)
         {
             _connectionStrings = p_connectionStrings;
         }

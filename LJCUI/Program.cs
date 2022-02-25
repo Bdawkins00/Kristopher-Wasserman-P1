@@ -45,7 +45,7 @@ while(repeat)
     {
         case "AddCustomer":
             Log.Information("Displaying add customer to user");
-            menu = new AddCustomer(new LakeJacksonBL(new SQLRepository(_connString)));
+            menu = new AddCustomer(new LakeJacksonBL(new SqlRepository(_connString)));
             break;
         case "MainMenu":
             Log.Information("Displaying MainMenu to user");
@@ -53,38 +53,38 @@ while(repeat)
             break;
         case "AddProduct":
             Log.Information("Displaying Add Product menu to user");
-            menu = new AddProduct(new LakeJacksonBL(new SQLRepository(_connString)));
+            menu = new AddProduct(new LakeJacksonBL(new SqlRepository(_connString)));
             break;
         case "SearchProducts" :
             Log.Information("Employee accessed inventory lookup menu");
-            menu = new SearchProducts(new LakeJacksonBL(new SQLRepository(_connString)));
+            menu = new SearchProducts(new LakeJacksonBL(new SqlRepository(_connString)));
             break;
         case "SearchCustomer":
             Log.Information("Employee accessed search function");
-            menu = new SearchCustomer(new LakeJacksonBL(new SQLRepository(_connString)));
+            menu = new SearchCustomer(new LakeJacksonBL(new SqlRepository(_connString)));
             break;
 
         case "PlaceOrder":
             Log.Information("Place Order function has been accessed by the user");
-            menu = new PlaceOrder(new LakeJacksonBL(new SQLRepository(_connString)));
+            menu = new PlaceOrder(new LakeJacksonBL(new SqlRepository(_connString)));
             break;
         case "StoreFrontUI":
-            menu = new StoreFrontUI(new LakeJacksonBL(new SQLRepository(_connString)));
+            menu = new StoreFrontUI(new LakeJacksonBL(new SqlRepository(_connString)));
             break;
         case "StoreMenu":
-            menu = new StoreMenu(new LakeJacksonBL(new SQLRepository(_connString)));
+            menu = new StoreMenu(new LakeJacksonBL(new SqlRepository(_connString)));
             break;
         case "Store":
-            menu = new Store(new LakeJacksonBL(new SQLRepository(_connString)));
+            menu = new Store(new LakeJacksonBL(new SqlRepository(_connString)));
             break;
         case "StoreInventory":
-            menu = new StoreInventory(new LakeJacksonBL(new SQLRepository(_connString)));
+            menu = new StoreInventory(new LakeJacksonBL(new SqlRepository(_connString)));
             break;
         case "OrderHistory":
-            menu = new OrderHistory(new LakeJacksonBL(new SQLRepository(_connString)));
+            menu = new OrderHistory(new LakeJacksonBL(new SqlRepository(_connString)));
             break;
         case "ReplemishInventory":
-            menu = new ReplemishInventory(new LakeJacksonBL(new SQLRepository(_connString)));
+            menu = new ReplemishInventory(new LakeJacksonBL(new SqlRepository(_connString)));
             break;
         case "Exit":
             Log.Information("Exiting Application");

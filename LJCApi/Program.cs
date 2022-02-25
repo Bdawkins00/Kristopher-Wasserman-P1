@@ -11,7 +11,7 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 
-builder.Services.AddScoped<IRepository>(repo => new SQLRepository(builder.Configuration.GetConnectionString("Reference2DB")));
+builder.Services.AddScoped<IRepository>(repo => new SqlRepository(builder.Configuration.GetConnectionString("Reference2DB")));
 builder.Services.AddScoped<ILakeJacksonBL, LakeJacksonBL>();
 
 var app = builder.Build();
