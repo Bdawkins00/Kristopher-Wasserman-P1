@@ -32,10 +32,10 @@ namespace LJCApi.Controllers
             {
                 return Ok(_repo.GetAllInventory());
             }
-            catch (System.Exception)
+            catch (Exception ex)
             {
                 
-                throw new Exception("Please try again");
+                return StatusCode(422,ex.Message);
             }
         }
 
@@ -47,10 +47,10 @@ namespace LJCApi.Controllers
             {
                 return Ok(_repo.GetAllInventoryByStoreId(storeid));
             }
-            catch (System.Exception)
+            catch (Exception ex)
             {
                 
-                throw new Exception("Please try again");
+                return StatusCode(422, ex.Message);
             }
         }
     }
