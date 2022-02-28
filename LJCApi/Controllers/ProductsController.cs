@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using LakeJacksonCyclingBL;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -9,8 +10,15 @@ namespace LJCApi.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+    
+    
     public class ProductsController : ControllerBase
     {
+        private readonly ILakeJacksonBL _repo;
+        public ProductsController(ILakeJacksonBL p_name)
+        {
+            _repo = p_name;
+        } 
         // GET: api/Products
         [HttpGet]
         public IEnumerable<string> Get()
@@ -19,10 +27,18 @@ namespace LJCApi.Controllers
         }
 
         // GET: api/Products/5
-        [HttpGet("{id}", Name = "Get")]
-        public string Get(int id)
+        [HttpGet("GetAllProducts")]
+        public IActionResult GetAllProducts()
         {
-            return "value";
+            try
+            {
+                return Ok(_repo.GetAllProducts());
+            }
+            catch (Exception ex)
+            {
+                
+             return StatusCode(422, ex.Message);
+            }
         }
 
         // POST: api/Products
