@@ -3,10 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using LakeJacksonCyclingBL;
-<<<<<<< HEAD
+
 using LakeJacksonCyclingModel;
-=======
->>>>>>> edd5463860289d54b287f9d89f287334e1a2b6e1
+
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -46,7 +45,6 @@ namespace LJCApi.Controllers
         }
 
         // POST: api/Products
-<<<<<<< HEAD
         [HttpPost("AddProduct")]
         public  IActionResult AddProducts([FromQuery] Products p_name)
         { 
@@ -90,7 +88,7 @@ namespace LJCApi.Controllers
         }
 
         
-=======
+
         [HttpPost]
         public void Post([FromBody] string value)
         {
@@ -107,6 +105,5 @@ namespace LJCApi.Controllers
         public void Delete(int id)
         {
         }
->>>>>>> edd5463860289d54b287f9d89f287334e1a2b6e1
     }
 }
