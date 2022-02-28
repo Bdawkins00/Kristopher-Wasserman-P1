@@ -10,34 +10,38 @@ namespace LJCApi.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-
-   
-    public class StroeController : ControllerBase
-    { 
+    public class InventoryController : ControllerBase
+    {
         private readonly ILakeJacksonBL _repo;
-        public StroeController(ILakeJacksonBL p_cInfoBL)
+        public InventoryController(ILakeJacksonBL p_cInfoBL)
         {
             _repo = p_cInfoBL;
         } 
-       
-        // GET: api/Stroe/5
-        [HttpGet("GetAllStores")]
-        public IActionResult GetAllStoreFronts()
+        // GET: api/Inventory
+        [HttpGet]
+        public IEnumerable<string> Get()
+        {
+            return new string[] { "value1", "value2" };
+        }
+
+        // GET: api/Inventory/5
+        [HttpGet("GetAllInventory")]
+        public IActionResult GetAllInventory()
         {
             try
             {
-                return Ok(_repo.GetAllStoreFront());
+                return Ok(_repo.GetAllInventory());
             }
             catch (System.Exception)
             {
                 
-                throw new Exception("Could not find.Please try again");
+                throw new Exception("Please try again");
             }
         }
 
-        
-        [HttpGet("GetAllStoresByID")]
-        public IActionResult GetAllStoresByID([FromBody] int storeid)
+        // POST: api/Inventory
+        [HttpGet("GetInventoryByStoreID")]
+        public IActionResult GetInventoryByStoreID([FromBody] int storeid)
         {
             try
             {
