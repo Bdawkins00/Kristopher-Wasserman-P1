@@ -1,5 +1,8 @@
 using LakeJacksonCyclingBL;
 using LakeJacksonCyclingDL;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.EntityFrameworkCore;
+using LJCApi.Areas.Identity.Data;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -12,7 +15,9 @@ builder.Services.AddSwaggerGen();
 
 
 builder.Services.AddScoped<IRepository>(repo => new SqlRepository(builder.Configuration.GetConnectionString("Reference2DB")));
-builder.Services.AddScoped<ILakeJacksonBL, LakeJacksonBL>();
+builder.Services.AddDbContext<LJCApiIdentityDbContext>(options =>
+    options.UseSqlServer(connectionString));builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
+    .AddEntityFrameworkStores<LJCApiIdentityDbContext>();builder.Services.AddScoped<ILakeJacksonBL, LakeJacksonBL>();
 
 var app = builder.Build();
 
@@ -24,7 +29,7 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
-
+app.UseAuthentication();
 app.UseAuthorization();
 
 app.MapControllers();
