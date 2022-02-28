@@ -19,7 +19,7 @@ namespace LakeJacksonCyclingModel
                 }
                 else
                 {
-                    throw new ValidationException ("Please enter a valid zip code");
+                    throw new ValidationException("Please enter a valid zip code");
                 }
             }
 
