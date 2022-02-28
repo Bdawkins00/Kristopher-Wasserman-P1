@@ -83,5 +83,19 @@ namespace LJCApi.Controllers
                 return StatusCode(422, ex.Message);
             }
         }
+
+        [HttpGet("GetCustomerHistory")]
+        public IActionResult GetCustomerHistory([FromQuery]int customerID)
+        {
+            try
+            {
+                return Ok(_repo.GetCustomerHistory(customerID));
+            }
+            catch (Exception ex)
+            {
+                
+                return StatusCode(422,ex.Message);
+            }
+        }
     }
 }
