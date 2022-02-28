@@ -70,5 +70,18 @@ namespace LJCApi.Controllers
                 return Conflict(ex.Message);
             }
         }
+        [HttpGet("SearchCustomer")]
+        public IActionResult SearchCustomer([FromQuery] string p_name)
+        {
+            try
+            {
+                return Ok(_repo.SearchCustomer(p_name));
+            }
+            catch (Exception ex)
+            {
+                
+                return StatusCode(422, ex.Message);
+            }
+        }
     }
 }
