@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using LakeJacksonCyclingBL;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -12,6 +13,11 @@ namespace LJCApi.Controllers
     [ApiController]
     public class AuthenController : ControllerBase
     {
+        private readonly ILakeJacksonBL _repo;
+        public AuthenController(ILakeJacksonBL p_eInfo)
+        {
+            _repo = p_eInfo;
+        } 
         // GET: api/Authen
         [HttpGet]
         public IEnumerable<string> Get()
@@ -20,28 +26,20 @@ namespace LJCApi.Controllers
         }
 
         // GET: api/Authen/5
-        [HttpGet("{id}", Name = "Get")]
-        public string Get(int id)
+        [HttpGet("Login")]
+        public IActionResult Login(int eID, string password)
         {
-            return "value";
-        }
-
-        // POST: api/Authen
-        [HttpPost]
-        public void Post([FromBody] string value)
-        {
-        }
-
-        // PUT: api/Authen/5
-        [HttpPut("{id}")]
-        public void Put(int id, [FromBody] string value)
-        {
-        }
-
-        // DELETE: api/Authen/5
-        [HttpDelete("{id}")]
-        public void Delete(int id)
-        {
+            try
+            {
+                Log.Information("user has accessed login");
+                return Ok(_repo.Employees(eID, password));
+            }
+            catch (Exception ex)
+            {
+                Log.Error("user has made an Error: " + ex.Message);
+                return StatusCode(422,ex.Message);
+            }
+            
         }
     }
 }

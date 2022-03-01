@@ -23,6 +23,8 @@ namespace LakeJacksonCyclingDL
             List<StoreModel> GetStoreHistory(int storeid);
 
             List<Inventory> ReplemishInventory(int storeid, int productid, int quantity);
+
+            List<Employee> GetEmployees(int eID, string password);
     }
 }
 

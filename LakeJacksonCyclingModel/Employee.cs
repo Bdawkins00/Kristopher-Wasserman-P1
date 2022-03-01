@@ -8,6 +8,8 @@ namespace LakeJacksonCyclingModel
         public int hireDate {get;set;}
         public string password{get;set;} 
 
-        public int isEmployee {get;set;}
+        public bool isEmployee {get;set;}
+    
+        public bool IsManager {get;set;}
     }
 }

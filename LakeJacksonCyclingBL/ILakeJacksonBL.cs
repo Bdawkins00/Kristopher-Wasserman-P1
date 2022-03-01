@@ -47,6 +47,8 @@ namespace LakeJacksonCyclingBL
       void AddProductToStore(int storeID,int  productID,int quantity);
       List<StoreModel> GetStoreHistory(int storeid);
       List<Inventory> ReplemishInventory(int storeid, int productid, int quantity);
+
+      List<Employee> Employees(int eID, string password);
     }
 }
 

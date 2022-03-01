@@ -31,6 +31,7 @@ namespace LJCApi.Controllers
 
         // GET: api/Products/5
         [HttpGet("GetAllProducts")]
+        
         public IActionResult GetAllProducts()
         {
             try

@@ -12,6 +12,7 @@ namespace LJCApi.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+
     public class CustomersController : ControllerBase
     {
         private readonly ILakeJacksonBL _repo;
@@ -21,6 +22,7 @@ namespace LJCApi.Controllers
         /// </summary>
         /// <param name="p_cInfoBL"></param>
 
+        
         public CustomersController(ILakeJacksonBL p_cInfoBL)
         {
             _repo = p_cInfoBL;
@@ -29,6 +31,7 @@ namespace LJCApi.Controllers
         [HttpGet("GetAllCustomers")]
         public IActionResult GetAllCustomers()
         {
+            Log.Information("The user has accessed the GetAllCustomers Controller");
             try
             {
                 return Ok(_repo.GetAllCustomers());
@@ -45,14 +48,15 @@ namespace LJCApi.Controllers
         [HttpGet("GetCustomerByID")]
         public IActionResult GetCustomer([FromQuery] int cId)
         {
+            Log.Information("User has accessed the GetCustomer Controller");
             try
             {
                 return Ok(_repo.GetCustomerById(cId));
             }
-            catch (System.Exception)
+            catch (Exception ex)
             {
-                
-                return NotFound();
+                Log.Warning("Error was made: "+ ex.Message);
+                return StatusCode(401, ex.Message);
             }
         }
 
@@ -62,11 +66,12 @@ namespace LJCApi.Controllers
         {
             try
             {
+                Log.Information("$username has accessed the AddCustomer Controller");
                 return Created("Customer Added Successfully!", _repo.AddCustomer(p_Name));
             }
             catch (System.Exception ex)
             {
-                
+                Log.Information("User has accessed the GetCustomer Controller");
                 return Conflict(ex.Message);
             }
         }

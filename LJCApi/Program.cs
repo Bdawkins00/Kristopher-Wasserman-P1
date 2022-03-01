@@ -1,8 +1,18 @@
+global using Serilog;
+
 using LakeJacksonCyclingBL;
 using LakeJacksonCyclingDL;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
-using LJCApi.Areas.Identity.Data;
+
+using Microsoft.Extensions.Configuration;
+
+Log.Logger = new LoggerConfiguration().WriteTo.File("./logs/user.txt").CreateLogger();
+var configuration = new ConfigurationBuilder()
+    .SetBasePath(Directory.GetCurrentDirectory())
+    .AddJsonFile("appsettings.json")
+    .Build();
+
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -14,10 +24,12 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 
+
 builder.Services.AddScoped<IRepository>(repo => new SqlRepository(builder.Configuration.GetConnectionString("Reference2DB")));
-builder.Services.AddDbContext<LJCApiIdentityDbContext>(options =>
-    options.UseSqlServer(connectionString));builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
-    .AddEntityFrameworkStores<LJCApiIdentityDbContext>();builder.Services.AddScoped<ILakeJacksonBL, LakeJacksonBL>();
+/*uilder.Services.AddDbContext<LJCApiIdentityDbContext>(options =>
+    options.UseSqlServer("Reference2DB"));
+builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
+    .AddEntityFrameworkStores<LJCApiIdentityDbContext>();builder.Services.AddScoped<ILakeJacksonBL, LakeJacksonBL>();*/
 
 var app = builder.Build();
 

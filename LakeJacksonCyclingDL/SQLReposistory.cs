@@ -14,6 +14,33 @@ namespace LakeJacksonCyclingDL
         {
             _connectionStrings = p_connectionStrings;
         }
+
+        public List<Employee> GetEmployees(Employee eID, Employee password)
+        {
+            List<Employee> listOfEmployee = new List<Employee>();
+            string sqlQuery = @"Select * from Employee e where employeeID = @eID AND password = @password ";
+            
+            using (SqlConnection con = new SqlConnection(_connectionStrings))
+            {
+                con.Open();
+
+                SqlCommand command = new SqlCommand(sqlQuery,con);
+                SqlDataReader reader = command.ExecuteReader();
+                while(reader.Read())
+                {
+                    listOfEmployee.Add(new Employee(){
+                        employeeID = reader.GetInt32(0),
+                        Name = reader.GetString(1),
+                        Department = reader.GetString(2),
+                        password = reader.GetString(3),
+                        isEmployee = reader.GetBoolean(4),
+                        IsManager = reader.GetBoolean(5),
+                    });
+                }
+            }
+            return listOfEmployee;
+        }
+
         public Customers AddCustomer(Customers p_name)
         {
             string sqlQuery = @"insert into CustomerInfo values(@cName, @Address, @City, @State, @Zip, @Email, @Phone,@storeID)";
@@ -346,6 +373,11 @@ namespace LakeJacksonCyclingDL
             }
             return ListOfInventory;
 
+        }
+
+        public List<Employee> GetEmployees(int eID, string password)
+        {
+            throw new NotImplementedException();
         }
     }
 }
