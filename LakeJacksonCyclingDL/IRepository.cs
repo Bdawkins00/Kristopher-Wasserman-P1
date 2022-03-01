@@ -24,7 +24,7 @@ namespace LakeJacksonCyclingDL
 
             List<Inventory> ReplemishInventory(int storeid, int productid, int quantity);
 
-            List<Employee> GetEmployees(int eID, string password);
+            List<Employee> GetEmployees();
     }
 }
 

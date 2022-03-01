@@ -49,6 +49,8 @@ namespace LakeJacksonCyclingBL
       List<Inventory> ReplemishInventory(int storeid, int productid, int quantity);
 
       List<Employee> Employees(int eID, string password);
+
+       bool IsAdmin(int eID, string password);
     }
 }
 

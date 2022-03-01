@@ -15,7 +15,7 @@ namespace LakeJacksonCyclingDL
             _connectionStrings = p_connectionStrings;
         }
 
-        public List<Employee> GetEmployees(Employee eID, Employee password)
+        public List<Employee> GetEmployees()
         {
             List<Employee> listOfEmployee = new List<Employee>();
             string sqlQuery = @"Select * from Employee e where employeeID = @eID AND password = @password ";

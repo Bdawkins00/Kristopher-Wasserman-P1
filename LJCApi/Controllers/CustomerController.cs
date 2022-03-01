@@ -22,24 +22,37 @@ namespace LJCApi.Controllers
         /// </summary>
         /// <param name="p_cInfoBL"></param>
 
-        
+        public List<Employee> eInfo = new List<Employee>();
         public CustomersController(ILakeJacksonBL p_cInfoBL)
         {
-            _repo = p_cInfoBL;
-        } 
+            _repo = p_cInfoBL; 
+            
+        }
+        
+
+       
         // GET: api/Customer
         [HttpGet("GetAllCustomers")]
-        public IActionResult GetAllCustomers()
+        public IActionResult GetAllCustomers([FromQuery] Customers p_name,int eID, string password)
         {
-            Log.Information("The user has accessed the GetAllCustomers Controller");
-            try
+            
+            if(_repo.IsAdmin(eID,password) == true)
             {
-                return Ok(_repo.GetAllCustomers());
+                Log.Information(" @eID has accessed the GetAllCustomers Controller");
+                try
+                {
+                    return Ok(_repo.GetAllCustomers());
+                }
+                catch (SqlException)
+                {
+                    
+                    return NotFound();
+                }
             }
-            catch (SqlException)
+            else
             {
-                
-                return NotFound();
+                Log.Warning("User made an unauthoried access attempt");
+                return StatusCode(401,"No access allowed for this user");
             }
             
         }
@@ -62,17 +75,24 @@ namespace LJCApi.Controllers
 
         // POST: api/Customer
         [HttpPost("Add")]
-        public IActionResult AddCustomer([FromQuery] Customers p_Name)
+        public IActionResult AddCustomer([FromQuery] Customers p_Name,int eID, string password)
         {
-            try
+            if(_repo.IsAdmin(eID,password) == true)
             {
-                Log.Information("$username has accessed the AddCustomer Controller");
-                return Created("Customer Added Successfully!", _repo.AddCustomer(p_Name));
+                try
+                {
+                    Log.Information("$username has accessed the AddCustomer Controller");
+                    return Created("Customer Added Successfully!", _repo.AddCustomer(p_Name));
+                }
+                catch (System.Exception ex)
+                {
+                    Log.Information("User has accessed the GetCustomer Controller");
+                    return Conflict(ex.Message);
+                }
             }
-            catch (System.Exception ex)
+            else
             {
-                Log.Information("User has accessed the GetCustomer Controller");
-                return Conflict(ex.Message);
+                return StatusCode(401,"No autherized access");
             }
         }
         [HttpGet("SearchCustomer")]
@@ -90,16 +110,23 @@ namespace LJCApi.Controllers
         }
 
         [HttpGet("GetCustomerHistory")]
-        public IActionResult GetCustomerHistory([FromQuery]int customerID)
+        public IActionResult GetCustomerHistory([FromQuery]int customerID, int eID, string password)
         {
-            try
+            if(_repo.IsAdmin(eID,password) == true)
             {
-                return Ok(_repo.GetCustomerHistory(customerID));
+                try
+                {
+                    return Ok(_repo.GetCustomerHistory(customerID));
+                }
+                catch (Exception ex)
+                {
+                    
+                    return StatusCode(422,ex.Message);
+                }
             }
-            catch (Exception ex)
+            else
             {
-                
-                return StatusCode(422,ex.Message);
+                return StatusCode(401, "No autherized access");
             }
         }
     }

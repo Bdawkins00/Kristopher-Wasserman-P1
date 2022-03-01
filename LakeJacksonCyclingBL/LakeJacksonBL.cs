@@ -115,9 +115,29 @@ namespace LakeJacksonCyclingBL
             return _repo.ReplemishInventory(storeid, productid, quantity);
         }
 
+        public List<Employee> Employees()
+        {
+            return _repo.GetEmployees();
+        }
+
+        public bool IsAdmin(int eID, string password)
+        {
+            try
+            {
+                Employee ep = new Employee();
+                ep = Employees().Where(ep => ep.employeeID.Equals(eID) & ep.password.Equals(password)).First();
+                return ep.IsManager;
+            }
+            catch (System.Exception)
+            {
+                
+                throw;
+            }
+        }
+
         public List<Employee> Employees(int eID, string password)
         {
-            return _repo.GetEmployees(eID,password);
+            throw new NotImplementedException();
         }
     }
 }
