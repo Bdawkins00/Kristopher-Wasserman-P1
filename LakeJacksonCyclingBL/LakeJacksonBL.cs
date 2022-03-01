@@ -1,6 +1,7 @@
 using LakeJacksonCyclingModel;
 using LakeJacksonCyclingDL;
 
+
 namespace LakeJacksonCyclingBL
 {
     public class LakeJacksonBL : ILakeJacksonBL
@@ -128,10 +129,10 @@ namespace LakeJacksonCyclingBL
                 ep = Employees().Where(ep => ep.employeeID.Equals(eID) & ep.password.Equals(password)).First();
                 return ep.IsManager;
             }
-            catch (System.Exception)
+            catch (Exception ex)
             {
                 
-                throw;
+                throw new Exception(ex.Message);
             }
         }
 
